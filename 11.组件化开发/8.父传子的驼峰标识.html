@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <!-- 好像驼峰可以识别了 -->
+        <cont1 :cinfo='info' :Mssig='mss'></cont1>
+    </div>
+    <template id="app">
+        <div>
+            <h2>{{cinfo}}</h2>
+            <h2>{{Mssig}}</h2>
+        </div>
+    </template>
+    <script src="../vue.js"></script>
+    <script>
+        // 创建1---子组件
+        const cont1 = ({
+            template: '#app',
+            props: {
+                // 传过来的对象
+                cinfo: {
+                    // 要求不传值的时候，提供一些默认值
+                    type: Object,
+                    default() {
+                        return {}
+                    }
+                },
+                //传过来的字符串
+                Mssig: {
+                    type: String,
+                    default() {
+                        return {}
+                    }
+                }
+            }
+        });
+        // 根组件
+        const a = new Vue({
+            el: '#box',
+            components: {
+                cont1
+            },
+            data: {
+                info: {
+                    name: '林俊杰',
+                    age: 18,
+                    Gender: '男'
+                },
+                mss: '哈哈哈'
+            }
+
+        })
+    </script>
+</body>
+
+</html>

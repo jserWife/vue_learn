@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="box">
+       <Development></Development>
+       <Development></Development>
+       <Development></Development>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        // 创建组件构造器
+        const conC = Vue.extend({
+            template: ` <div>
+                                <h2>我是标题</h2>
+                                <p>我是内容，哈哈哈哈哈</p>
+                                <p>我是内容，嘻嘻嘻嘻嘻嘻</p>
+                </div>
+                `
+        });
+        // 注册
+        Vue.component('Development', conC)
+
+
+        const a = new Vue({
+            el: '#box',
+
+
+        })
+    </script>
+</body>
+
+</html>

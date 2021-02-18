@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+           <!-- 方法1 -->
+        <h2 v-if='score > 90'>优秀</h2>
+        <h2 v-else-if='score > 80'>良好</h2>
+        <h2 v-else-if='score > 60'>不及格</h2>
+        <h2 v-else='score > 50'>差</h2>
+        <!-- 方法2 -->
+        <h1>{{showMess}}</h1>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const a = new Vue({
+            el: '#box',
+            data: {
+                score: 60
+            },
+            computed: {
+                showMess() {
+                    let cont = "";
+                    if (this.score > 90) {
+                        cont = '优秀'
+                    } else if (this.score < 90) {
+                        cont = '差差差'
+                    }
+                    return cont
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

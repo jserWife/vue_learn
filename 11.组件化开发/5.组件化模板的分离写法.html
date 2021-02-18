@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <con1></con1>
+    </div>
+    <!-- 分离组件1，，text/x-template -->
+    <!-- <script type="text/x-template" id="cpn1">
+        <h2>静夜思</h2>
+    </script> -->
+
+    <!-- 分离组件2，，，都需要用id去绑定-->
+    <template id="cpn1">
+        <h2>静夜思222222</h2>
+    </template>
+    <script src="../vue.js"></script>
+    <script>
+        // 语法糖注册
+        Vue.component('con1', {template:'#cpn1'});
+        const a = new Vue({
+            el: '#box',
+        })
+    </script>
+</body>
+
+</html>

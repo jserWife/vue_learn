@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+       <form v-if='isOff' >
+           <!-- for和id对应可以提高用户体验，点击文字也会聚焦输入框 -->
+           <!-- key可以让文本框不复用 -->
+           <label for="a">{{one}}:</label>
+           <input type="text" placeholder="请输入您的账号" id="a" key='abc'>
+           <button @click='btnClick'>切换类型</button>
+       </form>
+       <form v-else='isOff'>
+        <!-- for和id对应可以提高用户体验，点击文字也会聚焦输入框 -->
+        <label>{{two}}:</label>
+        <input type="text" placeholder="请输入您的账号" id="b" key='aaa'>
+        <button @click='btnClick'>切换类型</button>
+    </form>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const a = new Vue({
+            el: '#box',
+            data: {
+               one:'手机号号登录',
+               two:'QQ号登录',
+               isOff:true
+            },
+            methods: {
+                btnClick(){
+                 this.isOff =! this.isOff
+                }
+              
+            }
+        })
+    </script>
+</body>
+
+</html>

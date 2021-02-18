@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div id="box">
+        <div>{{message}}</div>
+        <h2>{{name}}</h2>
+    </div>  
+    <script src="../vue.js"></script>
+    <script>
+        const a=new Vue({
+            el:'#box',
+            data:{
+                message:'周杰',
+                name:'小李'
+            }
+        })
+    </script>
+</body>
+</html>

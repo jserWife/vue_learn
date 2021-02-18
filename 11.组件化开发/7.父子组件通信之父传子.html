@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <cont1 :move='moves' :names='name'></cont1>
+        <!-- 下面是例如没有传入names -->
+        <!-- <cont1 cont1 :move='moves' ></cont1> -->
+    </div>
+    <template id="app1">
+        <div>
+            {{move}}{{names}}
+            <!-- 这个是没有数据的时候传入默认值 -->
+            <!-- {{cmessage}} -->
+        </div>
+    </template>
+    <script src="../vue.js"></script>
+    <script>
+        // 创建1---子组件,语法糖写实现不了
+        // Vue.component('cont1',
+        //     {
+        //         template: '#app1',
+        //         props:['move']
+
+        //     }
+        // )
+        // 创建1---子组件
+        const cont1 = Vue.extend({
+            template: '#app1',
+            // 1.数组形式
+            props:['move', 'names'],
+
+
+            // props:{
+                // 2.对象形式，限制类型
+                // move: Array,
+                // names: String,
+                // 3.但不传值的时候，提供一些默认值,以及required必传值(cmessage是属性名)
+                // cmessage: {
+                    // 提供一些默认值,以及required必传值
+                    // type: Array,
+                    // default: 'aaaaaaaa',
+                    // required:true
+                // }
+            // }
+            })
+        // 根组件
+        const a = new Vue({
+                el: '#box',
+                components: {
+                    //  cont1: cont1的简写
+                    cont1
+                },
+                data: {
+                    moves: ['海泽王', '西游记', '红楼梦'],
+                    name: '小李'
+                },
+
+            })
+    </script>
+</body>
+
+</html>

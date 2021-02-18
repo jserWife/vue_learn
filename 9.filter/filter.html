@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="../vue.js"></script>
+    <script>
+        const nums = [10, 20, 30, 40, 50, 60, 70];
+        // 1.filter返回的布尔值，为true,会在内部把数据push到一个新的数组里
+        // let a = nums.filter(function (b) {
+        //     return b < 50
+        // })
+        // console.log(a);
+
+        // 2.map方法，b是数组每一项
+        // let a = nums.map(function (b) {
+        //     return b * 2
+        // })
+        // console.log(a);
+
+        // 3.reduce所有数组内容汇总
+        // let cc = nums.reduce(function (a, b) {
+        //     return a + b
+        // })
+
+
+        // 需求选出小于50的数字，*2在相加
+        let cc = nums.filter((n) => n < 50).map(n => n * 2).reduce((pre, n) => pre + n)
+        console.log(cc);
+    </script>
+</body>
+
+</html>

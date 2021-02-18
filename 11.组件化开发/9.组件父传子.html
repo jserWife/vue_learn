@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<!-- 1.子组件用数据--子组件数据函数data--在子组件模板使用数据--子组件模板里的点击事件--子组件事件发射到到父组件-- -->
+<body>
+    <!-- 父 -->
+    <div id="box">
+        <!-- 父组件接受数据监听 ，contCick 定义在父组件内部，，itmebtn是传过来的自定义属性事件-->
+        <cont1 @itmebtn='contCick'></cont1>
+    </div>
+    <!-- 子模板 -->
+    <template id="app">
+        <div>
+            <button v-for="item in info" @click='btnclick(item)'>{{item.name}}</button>
+        </div>
+    </template>
+    <script src="../vue.js"></script>
+    <script>
+        // 子组件
+        const cont1 = ({
+            template: '#app',
+            data() {
+                return {
+                   info:[
+                       {id:1,name:'手机通讯'},
+                       {id:1,name:'家电维修'},
+                       {id:1,name:'水果蔬菜'},
+                       {id:1,name:'服饰首饰'}
+                   ]
+                }
+            },
+            methods: {
+                btnclick(item){
+                    console.log(item);
+                    // 发射到父组件,自定义一个事件
+                    this.$emit('itmebtn')
+                }
+            },
+        });
+
+        // 父组件怎么接收发过来的数据？1.在父组件监听v-on事件，做的事情是另一个函数，（另一个函数)定义在父组件内部
+        // 父组件
+        const a = new Vue({
+            el: '#box',
+            components: {
+                cont1
+            },
+            methods:{
+                // 接受子组件传过来的事件做的事情
+                contCick(){
+                    console.log('itmebtn');
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

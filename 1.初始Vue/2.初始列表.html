@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <!--key可以提高性能，高效的更新虚拟DOM  -->
+            <li v-for='itme in moves' key="itme">{{itme}}</li>
+        </ul>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const a=new Vue({
+            el:'#box',
+            data:{
+                moves:['少年派','大清风','河姆渡','新时代']
+            }
+        })
+    </script>
+</body>
+</html>

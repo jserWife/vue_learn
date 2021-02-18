@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="box">
+        <!-- lazy失去焦点或回车键才触发 -->
+        <input type="text" v-model.lazy='message'>{{message}}
+        <br>
+        <br>
+        <br>
+        <!-- number字符串转数字类型，在双向绑定种 -->
+        <input type="number" v-model.number='age'>{{age}}
+        <h2>{{typeof age}}</h2>
+        <br>
+        <br>
+        <br>
+        <br>
+        <input type="text" v-model.trim="something">{{something}}
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const a = new Vue({
+            el: '#box',
+            data: {
+                message: '周杰',
+                age: 0,
+                something:'哈哈哈'
+            },
+            computed: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

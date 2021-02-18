@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <!-- 值，名，下标 -->
+            <li v-for='(value,key,index) in moves'>{{value}}-{{key}}-{{index}}</li>
+        </ul>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const a=new Vue({
+            el:'#box',
+            data:{
+                moves:{
+                    name:'少年派',
+                    age:'18',
+                    gender:'大清风'
+                }
+            }
+        })
+    </script>
+</body>
+</html>

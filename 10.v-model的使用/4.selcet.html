@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="box">
+        <!-- multiple是多选，select的样式 -->
+        <select name="" id="" v-model="something" >
+            <option value="苹果">苹果</option>
+            <option value="香蕉">香蕉</option>
+            <option value="葡萄">葡萄</option>
+            <option value="草莓">草莓</option>
+        </select>
+        <h2>您的选中是：{{something}}</h2>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const a = new Vue({
+            el: '#box',
+            data: {
+                something: '香蕉'
+            },
+            computed: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

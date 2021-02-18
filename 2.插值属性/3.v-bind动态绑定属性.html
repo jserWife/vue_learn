@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            color: red;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <!--  v-bind 动态绑定属性 -->
+        <img v-bind:src="urlImg" alt="">
+        <a v-bind:href="url">百度一下</a>
+        <!-- 语法糖写法，常用 -->
+        <img :src="urlImg" alt="">
+        <h2 :class="active">动态绑定class</h2>
+        <!-- 类名1：布尔值，类名2：布尔值 -->
+        <!-- <h2 v-bind:class="{active:true,line:true}">今天天气不错！</h2>  -->
+        <!-- <h2 v-bind:class="{active:isbool,line:onbool}">今天天气不错！</h2>  -->
+        <h2 v-bind:class=constClass()>今天天气不错！</h2> 
+        <!-- 点击按钮文字变色 -->
+        <button v-on:click='btnClick'>按钮变色</button>
+        <!-- v-bind,动态绑定style改变颜色，属性值要加‘’ -->
+        <h2 :style="{color:'rgba(89, 0, 255, 0.314)'}">通过v-bind,动态绑定style改变颜色</h2> 
+        <!--  -->
+        <h2 :style="{'font-size':fand + 'px'}">通过v-bind,动态绑定style改变大小</h2> 
+    </div>  
+    <script src="../vue.js"></script>
+    <script>
+        const a=new Vue({
+            el:'#box',
+            data:{
+               urlImg:'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3864366174,3024802681&fm=26&gp=0.jpg',
+               url:'https://www.baidu.com',
+               active:'active',
+               isbool:true,
+               onbool:false,
+               fand:80
+            },
+            methods:{
+                btnClick:function(){
+                    // 改变布尔值状态
+                this.isbool=!this.isbool
+            },
+            constClass:function(){
+                return {active:this.isbool,line:this.onbool}
+            }
+            }
+        })
+    </script>
+</body>
+</html>

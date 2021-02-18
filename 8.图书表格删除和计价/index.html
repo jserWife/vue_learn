@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 900px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            margin: 20px;
+        }
+
+        .thead-dark {
+            background: #e0d8d8;
+        }
+
+        td,
+        th {
+            width: 210px;
+            text-align: center;
+        }
+
+        th {
+            background: rgb(243, 240, 240);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <div v-if='books.length'>
+            <table class="table">
+                <thead class="thead-dark ">
+                    <tr>
+                        <td></td>
+                        <td v-for='(value) in Category'>{{value}}</td>
+                        <td>操作</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for='(itme,index) in books'>
+                        <!-- 结合写法 -->
+                        <!-- <td v-for='value in itme'>{{value}}</td> -->
+                        <td>{{itme.id}}</td>
+                        <td>{{itme.name}}</td>
+                        <td>{{itme.Publication}}</td>
+                        <!-- 实现￥和保留小数点方法一 -->
+                        <!-- <td>{{getfind(itme.Price)}}</td> -->
+                        <!-- 实现￥和保留小数点方法二 -->
+                        <!--Filter过滤器会把你需要过滤的参数传入过去，也就是| 前面的itme.Price  -->
+                        <td>{{itme.Price | Filter}}</td>
+                        <td>
+                            <button @click='btnClick1(index)' v-bind:disabled='itme.num <= 0'>-</button>
+                            <span>{{itme.num}}</span>
+                            <button @click='btnClick2(index)'>+</button>
+                        </td>
+                        <td><button @click='moveBtn(index)'>移除</button></td>
+                    </tr>
+                </tbody>
+                <h2> 总价格：{{totalPrice}}</h2>
+            </table>
+        </div>
+        <h2 v-else>购物车为空</h2>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    const a = new Vue({
+        el: '#box',
+        data: {
+            Category: {
+                name: '书籍名称',
+                Publication: '出版日期',
+                Price: '价格',
+                Purchase: '购买数量',
+                num: 0
+            },
+            books: [
+                {
+                    id: 1,
+                    name: '《老人与海》',
+                    Publication: '2016-9',
+                    Price: 70.00,
+                    num: 0
+                },
+                {
+                    id: 2,
+                    name: '《辛弃疾传》',
+                    Publication: '2004-5',
+                    Price: 60.00,
+                    num: 0
+                },
+                {
+                    id: 3,
+                    name: '《西游记》',
+                    Publication: '2020-1',
+                    Price: 90.00,
+                    num: 0
+                },
+                {
+                    id: 4,
+                    name: '《红楼梦》',
+                    Publication: '2010-4',
+                    Price: 110.00,
+                    num: 0
+                }
+            ],
+        },
+        methods: {
+            // <!-- 实现￥和保留小数点方法一 -->
+            // getfind(Price){
+            //     return '￥'+ Price.toFixed(2)
+            // },
+
+            btnClick1(index) {
+                this.books[index].num--
+            },
+            btnClick2(index) {
+                this.books[index].num++
+            },
+            moveBtn(index) {
+                // this.books结果打印是数组，在使用数组的方法
+                this.books.splice(index, 1)
+            }
+        },
+        // <!-- 实现￥和保留小数点方法二 -->
+        filters: {
+            // 过滤器方法
+            Filter(Price) {
+                return '￥' + Price.toFixed(2)
+            }
+        },
+        computed: {
+            totalPrice() {
+                // 方法一
+                // let conts=0;
+                // for(let i=0;i<this.books.length;i++){
+                //     conts+=this.books[i].Price*this.books[i].num
+                // }
+                // return conts
+                // 方法2
+                // let conts = 0;
+                // for (let key in this.books) {
+                //     conts += this.books[key].Price * this.books[key].num
+                // }
+                // return conts
+                // 方法3*********简单常用
+                let conts = 0;
+                for (let itme of this.books) {
+                    conts += itme.Price * itme.num
+                }
+                return conts
+            }
+        }
+    })
+</script>
+
+</html>

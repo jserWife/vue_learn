@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div id="box">
+        <!-- 属性计算调用的时候不用加() -->
+        <h2>总价:{{totalPrice}}元</h2>
+    </div>  
+    <script src="../vue.js"></script>
+    <script>
+        const a=new Vue({
+            el:'#box',
+            data:{
+               books:[
+                   {id:110,name:"水浒传",price:110},
+                   {id:120,name:"西游记",price:210},
+                   {id:130,name:"红楼梦",price:140},
+                   {id:140,name:"三国演义",price:150},
+               ]
+            },
+            computed:{
+                totalPrice:function(){
+                    let num=0;
+                    for(let i=0;i<this.books.length;i++){
+                        num+=this.books[i].price
+                    }
+                    return num
+            }
+            }
+        })
+    </script>
+</body>
+</html>

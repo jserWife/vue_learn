@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                // 成功调resolve
+                // resolve('hahahha')
+                // 失败调resolve
+                reject('errr')
+            },1000)
+        }).then((data)=>{
+            // cg走then
+            // console.log(data);
+            // return data+'1111'
+        }).catch((errr)=>{
+            // 失败走catch
+            console.log(errr);
+            return errr+'2222'
+        })
+    </script>
+</body>
+</html>

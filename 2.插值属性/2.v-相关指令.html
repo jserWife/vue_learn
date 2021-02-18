@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       [v-cloak]{
+           display: none;
+       }
+    </style>
+</head>
+
+<body>
+      <!-- v-cloak 渲染数据成功后在再页面显示-->
+    <div id="box"  v-cloak>
+         <!-- v-once会阻止响应式，让页面不随数据的变动而变动 -->
+        <h2>{{message}}</h2>
+        <h2 v-once>{{message}}</h2>
+        <!-- v-html 会解析标签-->
+        <h2 v-html='url'></h2>
+        <!-- v-text把内容显示在页面和Mustache一样作用 ，使用相对较少-->
+        <h2 v-text='names'></h2>
+        <!-- v-pre 会原封不动显示，不做任何解析-->
+        <h2 v-pre>{{names}}</h2>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const a = new Vue({
+            el: '#box',
+            data: {
+                message: '周杰', 
+                names: '周杰伦', 
+                url: '<a href="https://www.baidu.com/">百度一下</a>'
+            }
+        })
+    </script>
+</body>
+
+</html>

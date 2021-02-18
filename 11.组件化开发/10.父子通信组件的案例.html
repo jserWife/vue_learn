@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <cont1 :number1='num1' :number2='num2' @num1change='num1change' @num2change='num2change'></cont1>
+    </div>
+    <template id="app1">
+        <div>
+            <h2>props:{{number1}}</h2> 
+            <h2>data:{{dnum1}}</h2> 
+            <!-- 为什么要绑定到dnum1？而不是number1 ，因为修改一定要修改datade里的数据，而并不是props-->
+            <input type="text" :value="dnum1" @input='inpnum1'>
+            <h2>props:{{number2}}</h2> 
+            <h2>data:{{dnum2}}</h2> 
+            <!-- number2的h2标签和input双向绑定 -->
+            <input type="text" :value="dnum2" @input='inpnum2'>
+        </div>
+    </template>
+    <script src="../vue.js"></script>
+    <script>
+        const a = new Vue({
+            // 父组件
+            el: '#box',
+            data:{
+                num1:1,
+                num2:0
+            },
+            methods: {
+                num1change(value){
+                    this.num1=parseInt(value)
+                },
+                num2change(value){
+                    this.num2=parseInt(value)
+}
+            },
+            // 子组件
+            components: {
+                cont1:{
+                    template:'#app1',
+                    // 那里需要用其他地方的数据，就写在哪儿props，也就是让父组件给他传东西
+                    props:{
+                        number1:Number,
+                        number2:Number
+                    },
+                    data() {
+                        return {
+                            dnum1:this.number1,
+                            dnum2:this.number2
+                        }
+                    },
+                    // 
+                    methods: {
+                        inpnum1(event){
+                            this.dnum1=event.target.value,
+                            // 把自定义事件和值传过去父组件
+                            this.$emit('num1change',this.dnum1)
+                        },
+                        inpnum2(event){
+                            this.dnum2=event.target.value,
+                            this.$emit('num2change',this.dnum2)
+                        },
+                    },
+                }
+            },
+            
+
+        })
+    </script>
+</body>
+
+</html>

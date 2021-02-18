@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="box">
+        <label>
+            <!-- <input type="checkbox" name="a" v-model='name'>同意协议 -->
+            <input type="checkbox" value="足球" v-model='ues'>足球
+            <input type="checkbox" value="蓝球" v-model='ues'>蓝球
+            <input type="checkbox" value="乒乓球" v-model='ues'>乒乓球
+            <input type="checkbox" value="羽毛球" v-model='ues'>羽毛球
+        </label>
+        <!-- <h2>您的选中是:{{name}}</h2> -->
+        <h2>您的爱好是:{{ues}}</h2>
+        <button :disabled='!name'>下一步</button>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <!-- 动态绑定值 -->
+        <!-- <label v-for="item in Hobby" >
+            <input type="checkbox" :value="item" v-model="ues">{{item}}
+        </label>
+        <h2>您的爱好是{{ues}}</h2> -->
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const a = new Vue({
+            el: '#box',
+            data: {
+                name: false,
+                ues: [],
+                Hobby:['足球','蓝球','乒乓球','羽毛球','台球']
+            },
+            computed: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

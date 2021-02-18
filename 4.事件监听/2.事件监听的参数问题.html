@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <button @click='btnClick1'>按钮1</button>
+        <button @click='btnClick2'>按钮2</button>
+        <!-- 传入$event的标准写法 -->
+        <button @click='btnClick3("234",$event)'>按钮3</button>
+        <button @click='btnClick4()'>按钮4</button>
+
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const a = new Vue({
+            el: '#box',
+            methods: {
+                // 这个是ES6后的简写。省略了function
+                btnClick1() {
+                    // 按钮一
+                    console.log(2);
+
+                },
+                btnClick2(event) {
+                    // 按钮2，调用可以不写括号,浏览器默认把event传入
+                    console.log(event);
+
+                },
+                btnClick3(abc,event) {
+                    // 按钮一
+                    console.log(abc,event);
+
+                },
+                btnClick4(ab) {
+                    // 按钮一
+                    console.log(ab);
+
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>

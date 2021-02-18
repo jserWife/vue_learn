@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li.checked {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul>
+            <li v-for='(itme,index) in moves' v-on:click=fn(index) :class='{checked:index==n}'>{{itme}}</li>
+        </ul>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const a = new Vue({
+            el: '#box',
+            data: {
+                moves: ['少年派', '大清风', '河姆渡', '新时代'],
+                n: 0
+            },
+            methods: {
+                fn: function (index) {
+                    this.n = index
+                },
+            }
+
+        })
+    </script>
+</body>
+
+</html>

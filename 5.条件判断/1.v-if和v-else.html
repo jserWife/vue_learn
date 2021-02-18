@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+
+          <!-- v-show是增加行内样式，display;none -->
+          <h2 v-show='isOff' id="aa">
+            <div>哈哈哈</div>
+            <div>哈哈哈</div>
+            <div>哈哈哈</div>
+            <div>哈哈哈</div>
+        </h2>
+        
+        <!--为true就执行  为truec创建一个元素,反之-->
+        <h2 v-if='isOff' id="bb">
+            <div>哈哈哈</div>
+            <div>哈哈哈</div>
+            <div>哈哈哈</div>
+            <div>哈哈哈</div>
+        </h2>
+        <!-- if不符合就走else -->
+        <h2 v-else='isOff'>
+            <div>嘻嘻嘻</div>
+            <div>嘻嘻嘻</div>
+            <div>嘻嘻嘻</div>
+            <div>嘻嘻嘻</div>
+        </h2>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const a = new Vue({
+            el: '#box',
+            data: {
+                isOff:true
+            },
+            methods: {
+               
+            }
+        })
+    </script>
+</body>
+
+</html>

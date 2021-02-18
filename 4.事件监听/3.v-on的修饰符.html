@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <div @click='btnClick1'>aaaa
+            <!--会冒泡到父级.stop会阻止冒泡 -->
+            <button @click.stop='btnClick2'>按钮1</button>
+        </div>
+        <br>
+        <form action="baidu">
+            <!-- prevent阻止默认事件 -->
+            <input type="submit" value="提交" @click.prevent='submClick'>
+        </form>
+        <br>
+        <!-- keyUp键盘帽监听事件，enter是回车键才触发 -->
+        <input type="text" @keyUp.enter='keyUp'>
+        <input type="text" @keyUp.13='keyUp'>
+        <!-- once只执行一次 -->
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const a = new Vue({
+            el: '#box',
+            methods: {
+                btnClick1() {
+                    console.log(111);
+                }, 
+                btnClick2() {
+                    console.log(111);
+                },
+                submClick(){
+                    console.log(222);
+                },
+                keyUp(){
+                    console.log(444);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

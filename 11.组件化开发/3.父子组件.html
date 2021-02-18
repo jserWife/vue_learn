@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <cpn2></cpn2>
+        <!-- 需要用子组件要重新在实例化注册 -->
+        <!-- <cpn></cpn> -->
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        // 创建1---子组件
+        const cont1 = Vue.extend({
+            template: ` <div>
+          <h2>wwwwwwww</h2>
+          <p>eeeeeeeeeeeee</p>
+          <p>eeeeeeeeeeeee</p>
+      </div>`
+        });
+        // 创建2----父组件
+        const cont2 = Vue.extend({
+            template: ` <div>
+          <h2>哈哈哈哈哈</h2>
+          <p>嘻嘻嘻</p>
+          <cpn></cpn>
+          <p>呵呵呵呵呵</p>
+      </div>`,
+            //   注册，哪里插入哪里注册
+            components: {
+                'cpn': cont1
+            }
+        })
+
+        // 根组件
+        const a = new Vue({
+            el: '#box',
+            //父组件在实例化里注册
+            components: {
+                'cpn2': cont2,
+                // 参考15行
+                // 'cpn': cont1
+            }
+
+        })
+    </script>
+</body>
+
+</html>

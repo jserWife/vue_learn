@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box">
+        <h2>当前计数：{{num}}</h2>
+        <!-- 方法一 -->
+        <!-- <button v-on:click='num--'>-</button>
+        <button v-on:click='num++'>+</button> -->
+        <!-- 方法二 -->
+        <button @click='add'>-</button>
+        <button @click='sub'>+</button>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const a = new Vue({
+            el: '#box',
+            data: {
+                num: 0
+            },
+            methods: {
+                // 这个是ES6后的简写。省略了function
+                add() {
+                    console.log(this);
+                    this.num--
+                },
+                sub() {
+                    this.num++
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

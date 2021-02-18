@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div id="box">
+        <!-- 属性计算调用的时候不用加() -->
+        <h2>{{fullName}}</h2>
+    </div>  
+    <script src="../vue.js"></script>
+    <script>
+        const a=new Vue({
+            el:'#box',
+            data:{
+                message:'周杰',
+                name:'小李'
+            },
+            computed:{
+                fullName:function(){
+                return this.message + this.name
+            },
+
+            // 下面是上面方法的原型，计算属性是有setter和getter的
+            // fullName:{
+            //     set:function(){
+            //         // 这个不怎么用,只读属性
+            //     },
+            //     get:function(){
+            //         return abc
+            //     }
+            // }
+            }
+        })
+    </script>
+</body>
+</html>

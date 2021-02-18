@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="box">
+        <label>
+            <!-- name互斥，只能选一个 .如果同时有v-model也会互斥，就不用加name-->
+            <input type="radio" value="男" name="a" v-model='name'>男
+        </label>
+        <label>
+            <input type="radio" value="女" name="a" v-model='name'>女
+        </label>
+        <h2>您的性别是:{{name}}</h2>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        const a = new Vue({
+            el: '#box',
+            data: {
+                name: '男'
+            },
+            computed: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

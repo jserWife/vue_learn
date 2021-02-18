@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <con1></con1>
+        <con2></con2>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        // 语法糖,内部去创建，直接注册，省略Vue.extend
+        // ***全局组件实例化里也能用
+        Vue.component('con1', {
+            template: ` <div>
+          <h2>我是标题1</h2>
+      </div>`
+        });
+
+        const a = new Vue({
+            el: '#box',
+            // 注册写在实列对象类  {标签名：内容}
+                 components:{'con2': {template: ` <div>
+                  <h2>我是标题2</h2>
+              </div>`
+                }}
+          
+
+        })
+    </script>
+</body>
+
+</html>

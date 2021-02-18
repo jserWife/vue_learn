@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <con></con>
+        <con></con>
+        <con></con>
+    </div>
+    <script src="../vue.js"></script>
+    <script>
+        // 创建组件构造器
+        const contC = Vue.extend({
+            template: ` <div>
+          <h2>wwwwwwww</h2>
+          <p>eeeeeeeeeeeee</p>
+          <p>eeeeeeeeeeeee</p>
+      </div>`
+        })
+
+        const a = new Vue({
+            el: '#box',
+            // 注册写在实列对象类  {标签名：内容}
+         components:{'con': contC}
+
+        })
+    </script>
+</body>
+
+</html>
